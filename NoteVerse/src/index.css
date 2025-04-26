@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+body {
+  background-color: #1E1E1E;
+  color: white; /* Optional: To ensure text is visible on a black background */
+  font-family: 'DM Serif Text', serif;
+}
+
+div#root {
+  padding: 0;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
