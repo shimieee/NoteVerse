@@ -4,6 +4,7 @@ import Footer from '../components/footer'
 import About3 from '../assets/about3.jpg'
 import About2 from '../assets/about2.jpg'
 import { ArrowRightCircleIcon } from '@heroicons/react/20/solid'
+import Newsletter from '../sections/newsletter'
 
 const About = () => {
   return (
@@ -123,6 +124,9 @@ const About = () => {
             </div>
         </div>
     </section>
+    <div className="container mx-auto flex-grow py-16">
+                <Newsletter />
+    </div>
     <Footer />
     </>
   )
