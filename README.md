@@ -1,8 +1,8 @@
-#NoteVerse
+# NoteVerse
 
 NoteVerse is a note-taking application where users can organize their ideas in a clean, simple, and efficient way.
 
-#✨ Features
+# ✨ Features
 
 User Registration (Sign Up)
 User Login (Sign In)
@@ -10,12 +10,12 @@ Forgot Password functionality (Password Recovery)
 Firebase Authentication integration
 Responsive and modern UI
 
-#🚀 Tech Stack
+# 🚀 Tech Stack
 
 Frontend: (React / HTML-CSS-JS / etc.)
 Backend: Firebase Authentication
 
-#🔥 Setup Instructions
+# 🔥 Setup Instructions
 
 Clone the repository:
 git clone https://github.com/shimieee/noteverse.git
