@@ -35,7 +35,7 @@ Clone the repository:
 
 # 📄 Firebase Configuration Example
 
-<pre> <br>
+<pre> ```javascript <br>
   const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "your-project-id.firebaseapp.com",
