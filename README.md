@@ -20,7 +20,7 @@ NoteVerse is a note-taking application where users can organize their ideas in a
 Clone the repository:
 ```git clone https://github.com/shimieee/noteverse.git```
 
-cd noteverse
+```cd noteverse```
 
 # Install dependencies:
 ```npm install```
