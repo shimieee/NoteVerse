@@ -4,16 +4,16 @@ NoteVerse is a note-taking application where users can organize their ideas in a
 
 # ✨ Features
 
-User Registration (Sign Up)
-User Login (Sign In)
-Forgot Password functionality (Password Recovery)
-Firebase Authentication integration
-Responsive and modern UI
+* User Registration (Sign Up) 
+* User Login (Sign In)
+* Forgot Password functionality (Password Recovery)
+* Firebase Authentication integration
+* Responsive and modern UI
 
 # 🚀 Tech Stack
 
-Frontend: (React / HTML-CSS-JS / etc.)
-Backend: Firebase Authentication
+* Frontend: (React / TailwindCSS /  HTML-CSS-JS / etc.)
+* Backend: Firebase Authentication
 
 # 🔥 Setup Instructions
 
@@ -27,11 +27,11 @@ npm install
 
 # Set up Firebase:
 
-Create a project in Firebase Console.
-Enable Email/Password Authentication.
-Copy your Firebase config and paste it into your firebase.js file.
-Run the project:
-npm start
+* Create a project in Firebase Console.
+* Enable Email/Password Authentication.
+* Copy your Firebase config and paste it into your firebase.js file.
+* Run the project:
+    npm start
 
 # 📄 Firebase Configuration Example
 
@@ -48,15 +48,15 @@ const firebaseConfig = {
 
 # 🛠️ Future Plans
 
-Create / Save / Edit / Delete Notes
-Tagging and Organization System
-Search and Filter Notes
-Rich Text Editor Integration
-Dark Mode
+* Create / Save / Edit / Delete Notes
+* Tagging and Organization System
+* Search and Filter Notes
+* Rich Text Editor Integration
+* Dark Mode
 
 # 📬 Contact
 
 Feel free to reach out if you have any questions or suggestions!
 
-GitHub: shimieee
-Email: c.iken@aui.ma
+* GitHub: shimieee
+* Email: c.iken@aui.ma
