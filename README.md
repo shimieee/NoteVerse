@@ -18,12 +18,12 @@ NoteVerse is a note-taking application where users can organize their ideas in a
 # 🔥 Setup Instructions
 
 Clone the repository:
-git clone https://github.com/shimieee/noteverse.git
+```git clone https://github.com/shimieee/noteverse.git```
 
 cd noteverse
 
 # Install dependencies:
-npm install
+```npm install```
 
 # Set up Firebase:
 
@@ -31,11 +31,12 @@ npm install
 * Enable Email/Password Authentication.
 * Copy your Firebase config and paste it into your firebase.js file.
 * Run the project:
-    npm start
+```npm start```
 
 # 📄 Firebase Configuration Example
 
-const firebaseConfig = {
+<pre>``` <br>
+  const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "your-project-id.firebaseapp.com",
   projectId: "your-project-id",
@@ -43,6 +44,7 @@ const firebaseConfig = {
   messagingSenderId: "your-sender-id",
   appId: "your-app-id",
 };
+<br> </pre>
 
 ⚠️ Important: Do not expose sensitive API keys in public repositories without restricting their access in Firebase Console.
 
