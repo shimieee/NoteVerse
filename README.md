@@ -31,11 +31,11 @@ Clone the repository:
 * Enable Email/Password Authentication.
 * Copy your Firebase config and paste it into your firebase.js file.
 * Run the project:
-```npm start```
+```npm run dev```
 
 # 📄 Firebase Configuration Example
 
-<pre>``` <br>
+<pre> <br>
   const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "your-project-id.firebaseapp.com",
