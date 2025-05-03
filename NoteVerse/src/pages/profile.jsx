@@ -1,170 +1,172 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/navbar";
 
 const Profile = () => {
+  const [activeTab, setActiveTab] = useState('profile');
+  const [isEditing, setIsEditing] = useState(false);
+
   return (
-    <div>
+    <div className="min-h-screen bg-[#1E1E1E]">
       <Navbar />
-      <div className="w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
-        {/* Sidebar */}
-        <aside className="hidden py-4 md:w-1/3 lg:w-1/4 md:block">
-          <div className="sticky flex flex-col gap-2 p-4 text-sm border-r border-indigo-100 top-12">
-            <h2 className="pl-3 mb-4 text-2xl font-semibold">Settings</h2>
-            <a
-              href="#"
-              className="flex items-center px-3 py-2.5 font-bold bg-white text-indigo-900 border rounded-full"
-            >
-              Public Profile
-            </a>
-            <a
-              href="#"
-              className="flex items-center px-3 py-2.5 font-semibold hover:text-indigo-900 hover:border hover:rounded-full"
-            >
-              Account Settings
-            </a>
-            <a
-              href="#"
-              className="flex items-center px-3 py-2.5 font-semibold hover:text-indigo-900 hover:border hover:rounded-full"
-            >
-              Notifications
-            </a>
-            <a
-              href="#"
-              className="flex items-center px-3 py-2.5 font-semibold hover:text-indigo-900 hover:border hover:rounded-full"
-            >
-              PRO Account
-            </a>
-          </div>
-        </aside>
-
-        {/* Main Content */}
-        <main className="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4">
-          <div className="p-2 md:p-4">
-            <div className="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
-              <h2 className="pl-6 text-2xl font-bold sm:text-xl">Public Profile</h2>
-
-              <div className="grid max-w-2xl mx-auto mt-8">
-                {/* Profile Picture Section */}
-                <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* Sidebar */}
+          <aside className="w-full md:w-1/4">
+            <div className="bg-[#2b2b2b] rounded-lg p-6 shadow-lg">
+              <div className="flex flex-col items-center mb-8">
+                <div className="relative">
                   <img
-                    className="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
+                    className="w-32 h-32 rounded-full object-cover border-4 border-pink-200"
                     src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
-                    alt="Bordered avatar"
+                    alt="Profile"
                   />
-                  <div className="flex flex-col space-y-5 sm:ml-8">
-                    <button
-                      type="button"
-                      className="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-[#202142] rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200"
-                    >
-                      Change picture
-                    </button>
-                    <button
-                      type="button"
-                      className="py-3.5 px-7 text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:ring-4 focus:ring-indigo-200"
-                    >
-                      Delete picture
-                    </button>
+                  <button className="absolute bottom-0 right-0 p-2 bg-pink-200 rounded-full hover:bg-pink-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </button>
+                </div>
+                <h2 className="mt-4 text-2xl font-bold text-white">Jane Ferguson</h2>
+                <p className="text-pink-200">Student at University</p>
+              </div>
+
+              <nav className="space-y-2">
+                <button
+                  onClick={() => setActiveTab('profile')}
+                  className={`w-full flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                    activeTab === 'profile'
+                      ? 'bg-pink-200 text-gray-800'
+                      : 'text-white hover:bg-[#3b3b3b]'
+                  }`}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  Profile
+                </button>
+                <button
+                  onClick={() => setActiveTab('notes')}
+                  className={`w-full flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                    activeTab === 'notes'
+                      ? 'bg-pink-200 text-gray-800'
+                      : 'text-white hover:bg-[#3b3b3b]'
+                  }`}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  My Notes
+                </button>
+                <button
+                  onClick={() => setActiveTab('bookmarks')}
+                  className={`w-full flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                    activeTab === 'bookmarks'
+                      ? 'bg-pink-200 text-gray-800'
+                      : 'text-white hover:bg-[#3b3b3b]'
+                  }`}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                  </svg>
+                  Bookmarks
+                </button>
+                <button
+                  onClick={() => setActiveTab('settings')}
+                  className={`w-full flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                    activeTab === 'settings'
+                      ? 'bg-pink-200 text-gray-800'
+                      : 'text-white hover:bg-[#3b3b3b]'
+                  }`}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  </svg>
+                  Settings
+                </button>
+              </nav>
+            </div>
+          </aside>
+
+          {/* Main Content */}
+          <main className="w-full md:w-3/4">
+            <div className="bg-[#2b2b2b] rounded-lg p-6 shadow-lg">
+              <div className="flex justify-between items-center mb-6">
+                <h1 className="text-2xl font-bold text-white">Profile Information</h1>
+                <button
+                  onClick={() => setIsEditing(!isEditing)}
+                  className="px-4 py-2 text-sm font-medium text-white bg-pink-200 hover:bg-pink-300 rounded-lg transition-colors"
+                >
+                  {isEditing ? 'Save Changes' : 'Edit Profile'}
+                </button>
+              </div>
+
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-pink-200 mb-2">First Name</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-2 bg-[#3b3b3b] border border-gray-600 rounded-lg text-white focus:outline-none focus:border-pink-200"
+                      defaultValue="Jane"
+                      disabled={!isEditing}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-pink-200 mb-2">Last Name</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-2 bg-[#3b3b3b] border border-gray-600 rounded-lg text-white focus:outline-none focus:border-pink-200"
+                      defaultValue="Ferguson"
+                      disabled={!isEditing}
+                    />
                   </div>
                 </div>
 
-                {/* Profile Form */}
-                <div className="items-center mt-8 sm:mt-14 text-[#202142]">
-                  <div className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
-                    <div className="w-full">
-                      <label
-                        htmlFor="first_name"
-                        className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white"
-                      >
-                        Your first name
-                      </label>
-                      <input
-                        type="text"
-                        id="first_name"
-                        className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
-                        placeholder="Your first name"
-                        defaultValue="Jane"
-                        required
-                      />
-                    </div>
+                <div>
+                  <label className="block text-sm font-medium text-pink-200 mb-2">Email</label>
+                  <input
+                    type="email"
+                    className="w-full px-4 py-2 bg-[#3b3b3b] border border-gray-600 rounded-lg text-white focus:outline-none focus:border-pink-200"
+                    defaultValue="jane.ferguson@example.com"
+                    disabled={!isEditing}
+                  />
+                </div>
 
-                    <div className="w-full">
-                      <label
-                        htmlFor="last_name"
-                        className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white"
-                      >
-                        Your last name
-                      </label>
-                      <input
-                        type="text"
-                        id="last_name"
-                        className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
-                        placeholder="Your last name"
-                        defaultValue="Ferguson"
-                        required
-                      />
-                    </div>
-                  </div>
+                <div>
+                  <label className="block text-sm font-medium text-pink-200 mb-2">Bio</label>
+                  <textarea
+                    className="w-full px-4 py-2 bg-[#3b3b3b] border border-gray-600 rounded-lg text-white focus:outline-none focus:border-pink-200"
+                    rows="4"
+                    defaultValue="Computer Science student passionate about learning and sharing knowledge through notes."
+                    disabled={!isEditing}
+                  />
+                </div>
 
-                  <div className="mb-2 sm:mb-6">
-                    <label
-                      htmlFor="email"
-                      className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white"
-                    >
-                      Your email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
-                      placeholder="your.email@mail.com"
-                      required
-                    />
-                  </div>
-
-                  <div className="mb-2 sm:mb-6">
-                    <label
-                      htmlFor="profession"
-                      className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white"
-                    >
-                      Profession
-                    </label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-pink-200 mb-2">University</label>
                     <input
                       type="text"
-                      id="profession"
-                      className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
-                      placeholder="Your profession"
-                      required
+                      className="w-full px-4 py-2 bg-[#3b3b3b] border border-gray-600 rounded-lg text-white focus:outline-none focus:border-pink-200"
+                      defaultValue="University of Technology"
+                      disabled={!isEditing}
                     />
                   </div>
-
-                  <div className="mb-6">
-                    <label
-                      htmlFor="message"
-                      className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white"
-                    >
-                      Bio
-                    </label>
-                    <textarea
-                      id="message"
-                      rows="4"
-                      className="block p-2.5 w-full text-sm text-indigo-900 bg-indigo-50 rounded-lg border border-indigo-300 focus:ring-indigo-500 focus:border-indigo-500"
-                      placeholder="Write your bio here..."
-                    ></textarea>
-                  </div>
-
-                  <div className="flex justify-end">
-                    <button
-                      type="submit"
-                      className="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
-                    >
-                      Save
-                    </button>
+                  <div>
+                    <label className="block text-sm font-medium text-pink-200 mb-2">Major</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-2 bg-[#3b3b3b] border border-gray-600 rounded-lg text-white focus:outline-none focus:border-pink-200"
+                      defaultValue="Computer Science"
+                      disabled={!isEditing}
+                    />
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </main>
+          </main>
+        </div>
       </div>
     </div>
   );
