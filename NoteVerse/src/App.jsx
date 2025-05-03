@@ -7,6 +7,7 @@ import Register from './pages/register'; // Import your Register page
 import Dashboard from './pages/dashboard'; // Import your Dashboard page
 import Profile from './pages/profile';
 import Settings from './pages/settings'; // Import your Settings page
+import CreateNote from './pages/create-note'; // Import your Create Note page
 import Page404 from './pages/404'; // Import your 404 page
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/create-note" element={<CreateNote />} />
         <Route path="*" element={<Page404 />} />
         {/* Add more routes as needed */}
     </Routes>

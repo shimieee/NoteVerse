@@ -1,9 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { auth } from "../../firebase";
+import { supabase } from "../supabase";
 import Logo from "../assets/logo.png"; // Adjust the import path if needed
-import { onAuthStateChanged, signOut } from "firebase/auth";
 import gsap from "gsap";
 
 const Navbar = () => {
@@ -27,18 +26,29 @@ const Navbar = () => {
         repeat: 1, // Repeat once
       }
     );
-    // Track authentication state
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser); // Set the user state
+
+    // Get initial session
+    const getSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user || null);
+    };
+    getSession();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user || null);
     });
-    return () => unsubscribe(); // Cleanup subscription on unmount
+
+    return () => {
+      subscription?.unsubscribe();
+    };
   }, []);
 
   const handleLogout = async () => {
     try {
-      await signOut(auth); // Sign out the user
-      setUser(null); // Clear the user state
-      navigate("/signin"); // Redirect to the login page
+      await supabase.auth.signOut();
+      setUser(null);
+      navigate("/signin");
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -135,8 +145,8 @@ const Navbar = () => {
               >
                 <span className="sr-only">Open user menu</span>
                 <div className="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-                  {user.photoURL ? (
-                    <img src={user.photoURL} alt="Profile" className="w-full h-full object-cover" />
+                  {user.user_metadata?.avatar_url ? (
+                    <img src={user.user_metadata.avatar_url} alt="Profile" className="w-full h-full object-cover" />
                   ) : (
                     <svg className="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
@@ -149,7 +159,7 @@ const Navbar = () => {
               <div className="absolute right-0 z-50 hidden group-hover:block group-focus-within:block my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600 w-64">
                 <div className="px-4 py-3">
                   <span className="block text-sm text-gray-900 dark:text-white font-semibold">
-                    {user.displayName || user.email}
+                    {user.user_metadata?.full_name || user.email}
                   </span>
                   <span className="block text-xs text-gray-500 truncate">
                     {user.email}
