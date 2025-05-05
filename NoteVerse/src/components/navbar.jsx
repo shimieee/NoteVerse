@@ -80,9 +80,9 @@ const Navbar = () => {
             {/* Quick Actions */}
             <div className="hidden md:flex items-center gap-4">
               <Link
-                to="/upload"
-                className={`text-white hover:text-pink-200 transition-all duration-300 ${
-                  isActive('/upload') ? 'text-pink-200 font-semibold' : ''
+                to="/create-note"
+                className={`text-slate-100 hover:text-blue-400 transition-all duration-300 ${
+                  isActive('/create-note') ? 'text-blue-400 font-semibold' : ''
                 }`}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -91,8 +91,8 @@ const Navbar = () => {
               </Link>
               <Link
                 to="/bookmarks"
-                className={`text-white hover:text-pink-200 transition-all duration-300 ${
-                  isActive('/bookmarks') ? 'text-pink-200 font-semibold' : ''
+                className={`text-slate-100 hover:text-blue-400 transition-all duration-300 ${
+                  isActive('/bookmarks') ? 'text-blue-400 font-semibold' : ''
                 }`}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -105,31 +105,31 @@ const Navbar = () => {
             <div className="relative">
               <button
                 onClick={() => setShowNotifications(!showNotifications)}
-                className="text-white hover:text-pink-200 transition-all duration-300 relative"
+                className="text-slate-100 hover:text-blue-400 transition-all duration-300 relative"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                 </svg>
                 {notifications > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                     {notifications}
                   </span>
                 )}
               </button>
               {showNotifications && (
-                <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg py-2 z-50">
-                  <div className="px-4 py-2 border-b">
-                    <h3 className="text-lg font-semibold text-gray-800">Notifications</h3>
+                <div className="absolute right-0 mt-2 w-80 bg-slate-800 rounded-lg shadow-lg py-2 z-50 border border-slate-700">
+                  <div className="px-4 py-2 border-b border-slate-700">
+                    <h3 className="text-lg font-semibold text-slate-100">Notifications</h3>
                   </div>
                   <div className="max-h-60 overflow-y-auto">
                     {/* Mock notifications */}
-                    <div className="px-4 py-2 hover:bg-gray-100">
-                      <p className="text-sm text-gray-600">New note shared with you</p>
-                      <p className="text-xs text-gray-400">2 minutes ago</p>
+                    <div className="px-4 py-2 hover:bg-slate-700">
+                      <p className="text-sm text-slate-300">New note shared with you</p>
+                      <p className="text-xs text-slate-500">2 minutes ago</p>
                     </div>
-                    <div className="px-4 py-2 hover:bg-gray-100">
-                      <p className="text-sm text-gray-600">Your note got 5 new views</p>
-                      <p className="text-xs text-gray-400">1 hour ago</p>
+                    <div className="px-4 py-2 hover:bg-slate-700">
+                      <p className="text-sm text-slate-300">Your note got 5 new views</p>
+                      <p className="text-xs text-slate-500">1 hour ago</p>
                     </div>
                   </div>
                 </div>
@@ -179,6 +179,21 @@ const Navbar = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                       </svg>
                       Dashboard
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/bookmarks"
+                      className={`flex items-center px-4 py-2 text-sm ${
+                        isActive('/bookmarks')
+                          ? 'bg-gray-100 text-gray-900 dark:bg-gray-600 dark:text-white'
+                          : 'text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600'
+                      }`}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+                      </svg>
+                      Bookmarks
                     </Link>
                   </li>
                   <li>

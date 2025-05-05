@@ -1,109 +1,141 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className="bg-[#7D1C4A] w-full m-0 p-0 ">
-            <div className="mx-auto w-full">
-                <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
-                    {/* Company Section */}
+        <footer className="bg-[#1E1E1E] border-t border-gray-800">
+            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+                    {/* Brand Section */}
+                    <div className="space-y-4">
+                        <Link to="/" className="flex items-center space-x-2">
+                            <span className="text-2xl font-bold text-white">NoteVerse</span>
+                        </Link>
+                        <p className="text-sm text-gray-400">
+                            Your ultimate platform for sharing and discovering academic notes.
+                        </p>
+                        <div className="flex space-x-4">
+                            <a href="#" className="text-gray-400 hover:text-pink-200 transition-colors">
+                                <span className="sr-only">Twitter</span>
+                                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                                </svg>
+                            </a>
+                            <a href="#" className="text-gray-400 hover:text-pink-200 transition-colors">
+                                <span className="sr-only">GitHub</span>
+                                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                                </svg>
+                            </a>
+                            <a href="#" className="text-gray-400 hover:text-pink-200 transition-colors">
+                                <span className="sr-only">Discord</span>
+                                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Quick Links */}
                     <div>
-                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Company</h2>
-                        <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">About</a>
+                        <h3 className="text-sm font-semibold text-white uppercase tracking-wider">Quick Links</h3>
+                        <ul className="mt-4 space-y-4">
+                            <li>
+                                <Link to="/dashboard" className="text-base text-gray-400 hover:text-pink-200 transition-colors">
+                                    Dashboard
+                                </Link>
                             </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Careers</a>
+                            <li>
+                                <Link to="/create-note" className="text-base text-gray-400 hover:text-pink-200 transition-colors">
+                                    Create Note
+                                </Link>
                             </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Brand Center</a>
+                            <li>
+                                <Link to="/profile" className="text-base text-gray-400 hover:text-pink-200 transition-colors">
+                                    Profile
+                                </Link>
                             </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Blog</a>
+                            <li>
+                                <Link to="/settings" className="text-base text-gray-400 hover:text-pink-200 transition-colors">
+                                    Settings
+                                </Link>
                             </li>
                         </ul>
                     </div>
 
-                    {/* Help Center Section */}
+                    {/* Resources */}
                     <div>
-                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Help center</h2>
-                        <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Discord Server</a>
+                        <h3 className="text-sm font-semibold text-white uppercase tracking-wider">Resources</h3>
+                        <ul className="mt-4 space-y-4">
+                            <li>
+                                <a href="#" className="text-base text-gray-400 hover:text-pink-200 transition-colors">
+                                    Documentation
+                                </a>
                             </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Twitter</a>
+                            <li>
+                                <a href="#" className="text-base text-gray-400 hover:text-pink-200 transition-colors">
+                                    API Reference
+                                </a>
                             </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Facebook</a>
+                            <li>
+                                <a href="#" className="text-base text-gray-400 hover:text-pink-200 transition-colors">
+                                    Community
+                                </a>
                             </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Contact Us</a>
+                            <li>
+                                <a href="#" className="text-base text-gray-400 hover:text-pink-200 transition-colors">
+                                    Support
+                                </a>
                             </li>
                         </ul>
                     </div>
 
-                    {/* Legal Section */}
+                    {/* Legal */}
                     <div>
-                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Legal</h2>
-                        <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Privacy Policy</a>
+                        <h3 className="text-sm font-semibold text-white uppercase tracking-wider">Legal</h3>
+                        <ul className="mt-4 space-y-4">
+                            <li>
+                                <a href="#" className="text-base text-gray-400 hover:text-pink-200 transition-colors">
+                                    Privacy Policy
+                                </a>
                             </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Licensing</a>
+                            <li>
+                                <a href="#" className="text-base text-gray-400 hover:text-pink-200 transition-colors">
+                                    Terms of Service
+                                </a>
                             </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Terms & Conditions</a>
+                            <li>
+                                <a href="#" className="text-base text-gray-400 hover:text-pink-200 transition-colors">
+                                    Cookie Policy
+                                </a>
                             </li>
-                        </ul>
-                    </div>
-
-                    {/* Download Section */}
-                    <div>
-                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Download</h2>
-                        <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">iOS</a>
-                            </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Android</a>
-                            </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Windows</a>
-                            </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">MacOS</a>
+                            <li>
+                                <a href="#" className="text-base text-gray-400 hover:text-pink-200 transition-colors">
+                                    Copyright
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
-            </div>
 
-            {/* Bottom Section */}
-            <div className="px-4 py-6  md:flex md:items-center md:justify-between">
-                <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
-                    © 2025 <a href="https://flowbite.com/" className="hover:underline">NoteVerse™</a>. All Rights Reserved.
-                </span>
-                <div className="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
-                    <a href="#" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
-                        <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
-                            <path fillRule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clipRule="evenodd" />
-                        </svg>
-                        <span className="sr-only">Facebook page</span>
-                    </a>
-                    <a href="#" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
-                        <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
-                            <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z" />
-                        </svg>
-                        <span className="sr-only">Discord community</span>
-                    </a>
-                    <a href="#" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
-                        <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 17">
-                            <path fillRule="evenodd" d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z" clipRule="evenodd" />
-                        </svg>
-                        <span className="sr-only">Twitter page</span>
-                    </a>
+                {/* Bottom Section */}
+                <div className="mt-12 border-t border-gray-800 pt-8">
+                    <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
+                        <p className="text-sm text-gray-400">
+                            © {new Date().getFullYear()} NoteVerse. All rights reserved.
+                        </p>
+                        <div className="flex space-x-6">
+                            <a href="#" className="text-sm text-gray-400 hover:text-pink-200 transition-colors">
+                                Accessibility
+                            </a>
+                            <a href="#" className="text-sm text-gray-400 hover:text-pink-200 transition-colors">
+                                Status
+                            </a>
+                            <a href="#" className="text-sm text-gray-400 hover:text-pink-200 transition-colors">
+                                Contact
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>
