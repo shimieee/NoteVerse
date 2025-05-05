@@ -13,6 +13,7 @@ const Dashboard = () => {
   const [courses, setCourses] = useState(['all'])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [bookmarkedNotes, setBookmarkedNotes] = useState([])
   const navigate = useNavigate()
 
   // Fetch notes from Supabase
@@ -83,8 +84,32 @@ const Dashboard = () => {
     }
   }
 
+  // Fetch bookmarked notes
+  const fetchBookmarks = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      const { data: bookmarks, error: bookmarkError } = await supabase
+        .from('bookmarks')
+        .select(`
+          note_id,
+          notes (*)
+        `)
+        .eq('user_id', user.id);
+
+      if (bookmarkError) throw bookmarkError;
+
+      const bookmarkedNotesData = bookmarks.map(bookmark => bookmark.notes);
+      setBookmarkedNotes(bookmarkedNotesData || []);
+    } catch (err) {
+      console.error('Error fetching bookmarks:', err);
+    }
+  };
+
   useEffect(() => {
     fetchNotes()
+    fetchBookmarks()
   }, [])
 
   // Debounced search handler
@@ -109,6 +134,73 @@ const Dashboard = () => {
   const handleCreateNote = () => {
     navigate('/create-note')
   }
+
+  const handleBookmark = async (noteId) => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        navigate('/login');
+        return;
+      }
+
+      // Check if note is already bookmarked
+      const isBookmarked = bookmarkedNotes.some(note => note.id === noteId);
+
+      if (isBookmarked) {
+        // Remove bookmark
+        const { error } = await supabase
+          .from('bookmarks')
+          .delete()
+          .eq('user_id', user.id)
+          .eq('note_id', noteId);
+
+        if (error) throw error;
+        setBookmarkedNotes(prev => prev.filter(note => note.id !== noteId));
+      } else {
+        // Add bookmark
+        const { error } = await supabase
+          .from('bookmarks')
+          .insert({
+            user_id: user.id,
+            note_id: noteId
+          });
+
+        if (error) throw error;
+        
+        // Add the note to bookmarkedNotes state
+        const noteToBookmark = [...myNotes, ...publicNotes].find(note => note.id === noteId);
+        if (noteToBookmark) {
+          setBookmarkedNotes(prev => [...prev, noteToBookmark]);
+        }
+      }
+    } catch (err) {
+      console.error('Error toggling bookmark:', err);
+    }
+  };
+
+  const handleViewNote = (noteId) => {
+    navigate(`/view-note/${noteId}`);
+  };
+
+  const handleDownload = async (noteId) => {
+    try {
+      const note = [...myNotes, ...publicNotes].find(note => note.id === noteId);
+      if (!note || !note.file_url) return;
+
+      const response = await fetch(note.file_url);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = note.file_name || 'note';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (err) {
+      console.error('Error downloading note:', err);
+    }
+  };
 
   if (loading) {
     return (
@@ -221,7 +313,10 @@ const Dashboard = () => {
               <div key={note.id} className="bg-[#2b2b2b] rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-xl font-semibold text-white">{note.title}</h3>
-                  <button className="text-gray-400 hover:text-pink-200">
+                  <button 
+                    onClick={() => handleBookmark(note.id)}
+                    className={`text-gray-400 hover:text-pink-200 ${bookmarkedNotes.some(bn => bn.id === note.id) ? 'text-pink-200' : ''}`}
+                  >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
                     </svg>
@@ -231,8 +326,20 @@ const Dashboard = () => {
                 <p className="text-gray-500 text-sm mb-2">Uploaded: {new Date(note.created_at).toLocaleDateString()}</p>
                 <p className="text-gray-400 text-sm mb-4 line-clamp-2">{note.content}</p>
                 <div className="mt-4 flex space-x-2">
-                  <button className="text-pink-200 hover:text-pink-300">View</button>
-                  <button className="text-gray-400 hover:text-white">Download</button>
+                  <button 
+                    onClick={() => handleViewNote(note.id)}
+                    className="text-pink-200 hover:text-pink-300"
+                  >
+                    View
+                  </button>
+                  {note.file_url && (
+                    <button 
+                      onClick={() => handleDownload(note.id)}
+                      className="text-gray-400 hover:text-white"
+                    >
+                      Download
+                    </button>
+                  )}
                 </div>
               </div>
             ))

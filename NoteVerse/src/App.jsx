@@ -9,6 +9,9 @@ import Profile from './pages/profile';
 import Settings from './pages/settings'; // Import your Settings page
 import CreateNote from './pages/create-note'; // Import your Create Note page
 import Page404 from './pages/404'; // Import your 404 page
+import ViewNote from './pages/view-note';
+import EditNote from './pages/edit-note';
+import Bookmarks from './pages/bookmarks';
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/create-note" element={<CreateNote />} />
+        <Route path="/view-note/:id" element={<ViewNote />} />
+        <Route path="/edit-note/:id" element={<EditNote />} />
+        <Route path="/bookmarks" element={<Bookmarks />} />
         <Route path="*" element={<Page404 />} />
         {/* Add more routes as needed */}
     </Routes>
